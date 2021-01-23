@@ -5,7 +5,7 @@ function feito(x) {
     
     let novoArray = [x[x.length-1]];
     
-    for(let = i=1; i<(x.length-1); i++){
+    for(let i=1; i<(x.length-1); i++){
         novoArray.push(x[i])
     }
     novoArray.push(x[0])
