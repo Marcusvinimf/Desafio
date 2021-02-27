@@ -1,14 +1,17 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
-const app = express();
+const controllUsuarios = require('./controllers/usuario_controllers');
+const controllTarefas = require('./controllers/tarefas_controllers')
+const bd = require('./infra/bd')
+
 const port = 3001;
-const controllUsuarios = require('./controllers/usuario_controllers')
+const app = express();
 
-controllUsuarios(app);
+app.use(bodyParser.json());
 
-app.get('/', (req, resp) =>{
-    resp.send('<h1>FOI MERMO...</h1>')
-})
+controllUsuarios(app, bd);
+controllTarefas(app, bd);
 
 app.listen(port, ()=>{
     console.log(`ouvindo a porta ${port}`)
